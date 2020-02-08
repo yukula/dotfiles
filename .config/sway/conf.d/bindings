@@ -13,8 +13,8 @@ bindsym --to-code {
 
   # Move the currently focused window to the scratchpad
   $mod+Shift+minus move scratchpad
-  # Get the last container(case LIFO) out of the scratchpad
-  $mod+Shift+equal show scratchpad
+  # Get the first container(case FIFO) out of the scratchpad
+  $mod+Shift+equal scratchpad show
 
 # Layout
   # The same shortcut as tmux has

@@ -1,0 +1,21 @@
+# Theme colors
+set $bg         #16171e
+set $fg         #f4f1de
+set $red        #e87761
+set $green      #74bca4
+set $yellow     #fcd894
+
+set $bg_        #111116
+set $fg_        #b2b0a2
+set $red_       #a95748
+set $green_     #558978
+set $yellow_    #b89e6c
+
+# class                   border  backgr. text indic.
+  client.focused          $fg     $fg     $bg  $green_
+  client.focused_inactive $fg_    $bg     $fg  $green_
+  client.unfocused        $fg_    $bg     $fg  $bg
+#  client.urgent           #CB4B16 #FDF6E3 #1ABC9C
+#  client.placeholder      #FFFFFF #0C0C0C #FFFFFF
+
+

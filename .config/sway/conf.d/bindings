@@ -1,0 +1,121 @@
+### layout-independent ###
+### https://github.com/swaywm/sway/wiki ###
+### https://git.sr.ht/~sircmpwn/dotfiles/tree/master/.config/sway/config ###
+### https://github.com/Yaroslav-95/swayrice/blob/master/dotfiles/.config/sway/config ###
+
+bindsym --to-code {
+
+# General
+    # Reload the config file. The same shortcut as tmux has
+  $mod+Shift+r reload
+  $mod+Shift+q kill
+  $mod+Shift+e exit
+
+  # Move the currently focused window to the scratchpad
+  $mod+Shift+minus move scratchpad
+  # Get the last container(case LIFO) out of the scratchpad
+  $mod+Shift+equal show scratchpad
+
+# Layout
+  # The same shortcut as tmux has
+  # Imagine vertical/horizontal line that'll split the window
+  $mod+v splith
+  $mod+s splitv
+
+  # Change layouts with mod+,./
+  $mod+comma layout stacking
+  $mod+period layout tabbed
+  $mod+slash layout toggle split
+
+  $mod+f fullscreen
+
+  # Toggle the current focus between tiling and floating mode
+  $mod+space focus mode_toggle
+
+  $mod+Shift+space floating toggle
+
+# Media
+  # Audio
+  XF86AudioMute exec exec $volume_mute
+  XF86AudioLowerVolume exec $volume_down
+  XF86AudioRaiseVolume exec $volume_up
+  # Brightness
+  XF86MonBrightnessUp exec $brightness_up
+  XF86MonBrightnessDown exec $brightness_down
+
+# Workspace
+  $mod+1 workspace $ws1
+  $mod+2 workspace $ws2
+  $mod+3 workspace $ws3
+  $mod+4 workspace $ws4
+  $mod+5 workspace $ws5
+  $mod+6 workspace $ws6
+  $mod+7 workspace $ws7
+  $mod+8 workspace $ws8
+  $mod+9 workspace $ws9
+  $mod+0 workspace $ws10
+
+  # tryout period
+  # Try to use R_Alt
+  $mod+Mod1+h workspace prev_on_output
+  $mod+Mod1+l workspace next_on_output
+  
+# Focus
+  # change focus with mod+hjkl
+  $mod+h focus left
+  $mod+j focus down
+  $mod+k focus up
+  $mod+l focus right
+  # tryout period
+  $mod+g focus next
+  $mod+Shift+g focus prev
+
+# Move
+  # move focused window with mod+shift+hjkl
+  $mod+Shift+h move left
+  $mod+Shift+j move down
+  $mod+Shift+k move up
+  $mod+Shift+l move right
+
+  # move container to workspace with meta+shift+1234567890
+  $mod+Shift+1 move container to workspace $ws1
+  $mod+Shift+2 move container to workspace $ws2
+  $mod+Shift+3 move container to workspace $ws3
+  $mod+Shift+4 move container to workspace $ws4
+  $mod+Shift+5 move container to workspace $ws5
+  $mod+Shift+6 move container to workspace $ws6
+  $mod+Shift+7 move container to workspace $ws7
+  $mod+Shift+8 move container to workspace $ws8
+  $mod+Shift+9 move container to workspace $ws9
+  $mod+Shift+0 move container to workspace $ws10
+
+
+# Apps
+  $mod+Return exec $term
+  $mod+d exec $menu
+  # Screenshots
+  $mod+Print exec $screenshot
+  # Telegram drop-down
+  $mod+Shift+t exec $ddtelegram
+  # Mako dissmiss the all notification
+  $mod+Shift+n exec makoctl dismiss -a
+}
+
+# Move window with mod+mouse drag
+floating_modifier $mod normal
+
+# vim-style window splits and resizing after hitting mod+w
+mode "window" {
+  bindsym s split v; mode "default"
+  bindsym v split h; mode "default"
+  bindsym $left resize shrink width 10 ppt or 10 px
+  bindsym $down resize grow height 10 ppt or 10 px
+  bindsym $up resize shrink height 10 ppt or 10 px
+  bindsym $right resize grow width 10 ppt or 10 px
+  # Leave window mode with return/escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym q mode "default"
+}
+bindsym $mod+w mode "window"
+

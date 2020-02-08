@@ -1,0 +1,78 @@
+/*
+You can type here any CSS rule recognized by GTK+.
+You can temporarily disable this custom CSS by clicking on the “Pause” button above.
+
+Changes are applied instantly and globally, for the whole application.
+*/
+
+@define-color wb_bg		#16171E;
+@define-color wb_fg		#F4F1DE;
+@define-color wb_red		#E87761;
+@define-color wb_green		#74BCA4;
+@define-color wb_yellow		#FCD894;
+
+
+* {
+	border: none;
+	border-radius: 0;
+	font-family: JetBrains Mono;
+	font-size: 14px;
+	font-weight: bold;
+	min-height: 20px;
+}
+
+window#waybar {
+	background:
+		linear-gradient(
+			to right,
+			@wb_red 5%,
+			@wb_green 50%,
+			@wb_yellow 95%
+		)
+		left
+		bottom
+		alpha(@wb_bg, 0.8)
+		no-repeat;
+	background-size: 100% 5px;
+}
+
+#workspaces button {
+	/*padding-bottom: 5px;*/
+	border-radius: 5px;
+	color: @wb_fg;
+}
+#workspaces button.focused {
+	background-color: alpha(@wb_red, 1);
+}
+
+#window {
+	padding-bottom: 3px;
+	color: @wb_fg;
+}
+
+#tray,
+#pulseaudio,
+#custom-brightness,
+#cpu,
+#memory,
+#battery,
+#clock {
+	color: @wb_bg;
+/*	padding: 0 15px 5px; */
+	padding: 0 15px 0px;
+	margin: 0 3px;
+	border-radius: 3px;
+}
+#tray {
+	background-color: alpha(#b4c99d, 0);
+	color: @wb_bg;
+}
+#pulseaudio {background-color: alpha(#C4CD9B, 1)}
+#custom-brightness {background-color: alpha(#ccce9a, 1)}
+#cpu {background-color: alpha(#d6d098, 1)}
+#memory {background-color: alpha(#e5d496, 1)}
+#battery {background-color: alpha(#f4d695, 1)}
+#clock {
+	background-color: alpha(@wb_yellow, 1);
+	margin-right: 0;
+}

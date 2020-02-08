@@ -1,0 +1,79 @@
+ 
+# Windows key
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Disable titlebar
+font JetBrains Mono Regular 0
+titlebar_border_thickness 0
+titlebar_padding 2
+default_border normal 4
+
+gaps inner 10
+
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+
+set $term alacritty
+set $menu --no-startup-id bash -c 'swaymsg -t command "exec --no-startup-id $(~/.local/Apps/alacritty_menu commands)"'
+set $screenshot --no-startup-id bash -c 'grim -g "$(slurp)" ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")'
+set $ddtelegram --no-startup-id ddtelegram.sh
+set $volume_mute --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+set $volume_up --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+set $volume_down --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+set $brightness_up --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.increase 0.05
+set $brightness_down --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.decrease 0.05
+
+
+
+
+output * bg ~/.local/share/backgrounds/3.jpg fill
+# https://github.com/swaywm/sway/wiki
+output eDP-1 scale 2
+
+input type:touchpad {
+        tap enabled
+        natural_scroll enabled
+        dwt enabled
+        pointer_accel 0.3
+}
+input type:keyboard {
+        xkb_layout us,ru
+        xkb_options grp:lalt_lshift_toggle,ctrl:nocaps
+}
+
+
+
+# Window settings
+for_window [app_id="alacritty-menu"] floating enable, resize set width 1000 px height 250 px
+for_window [app_id="telegramdesktop"] {
+        opacity 0.98
+        move to workspace 10
+        move right
+        resize set width 550 px
+}
+for_window [instance="spotify"] {
+        opacity 0.98
+        move to workspace 10
+}
+for_window [app_id="Firefox Beta" title="^Picture-in-Picture$"] floating enable
+
+
+
+
+
+include ~/.config/sway/conf.d/bindings
+include ~/.config/sway/conf.d/theme
+include ~/.config/sway/conf.d/autostart

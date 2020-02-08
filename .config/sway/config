@@ -39,7 +39,7 @@ set $brightness_down --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzb
 
 
 
-output * bg ~/.local/share/backgrounds/3.jpg fill
+output * bg ~/.local/share/backgrounds/5.jpg fill
 # https://github.com/swaywm/sway/wiki
 output eDP-1 scale 2
 

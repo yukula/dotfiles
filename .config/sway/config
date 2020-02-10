@@ -31,8 +31,8 @@ set $menu --no-startup-id bash -c 'swaymsg -t command "exec --no-startup-id $(~/
 set $screenshot --no-startup-id bash -c 'grim -g "$(slurp)" ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")'
 set $ddtelegram --no-startup-id ddtelegram.sh
 set $volume_mute --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-set $volume_up --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-set $volume_down --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+set $volume_up --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+set $volume_down --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
 set $brightness_up --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.increase 0.05
 set $brightness_down --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.decrease 0.05
 

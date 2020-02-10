@@ -36,7 +36,7 @@ bindsym --to-code {
 
 # Media
   # Audio
-  XF86AudioMute exec exec $volume_mute
+  XF86AudioMute exec $volume_mute
   XF86AudioLowerVolume exec $volume_down
   XF86AudioRaiseVolume exec $volume_up
   # Brightness

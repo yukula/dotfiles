@@ -29,7 +29,7 @@
 	"format": " {}%",	
 	"max-lenght": 10,
 	"interval": 10,
-	"exec": "get_brightness.sh",
+	"exec": "/home/ulvd/.local/bin/get_brightness.sh",
 	"exec-if": "pgrep wlr-brightness"
     },
 

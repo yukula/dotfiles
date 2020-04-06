@@ -41,7 +41,12 @@ set $brightness_down --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzb
 
 output * bg ~/.local/share/backgrounds/5.jpg fill
 # https://github.com/swaywm/sway/wiki
+# man sway-output
+# swaymsg -t get_outputs
 output eDP-1 scale 2
+output eDP-1 pos 0 0
+output DP-3 scale 1
+output DP-3 pos 1920 0
 
 input type:touchpad {
         tap enabled

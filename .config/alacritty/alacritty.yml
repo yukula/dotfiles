@@ -2,7 +2,7 @@
 # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 #
 
-tabspaces: 2
+#tabspaces: 2
 background_opacity: 0.98
 
 # https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6

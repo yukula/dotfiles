@@ -1,5 +1,6 @@
- 
-# Windows key
+xwayland disable
+
+# Windows key as 'leader'
 set $mod Mod4
 
 set $left h
@@ -27,26 +28,26 @@ set $ws9 9
 set $ws10 10
 
 set $term alacritty
-set $menu --no-startup-id bash -c 'swaymsg -t command "exec --no-startup-id $(~/.local/Apps/alacritty_menu commands)"'
-set $screenshot --no-startup-id bash -c 'grim -g "$(slurp)" ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")'
-set $ddtelegram --no-startup-id ddtelegram.sh
-set $volume_mute --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-set $volume_up --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-set $volume_down --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-set $brightness_up --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.increase 0.05
-set $brightness_down --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.decrease 0.05
+set $menu --no-startup-id bash -c 'swaymsg -t command "exec --no-startup-id $(wofi --show run)"'
+#set $screenshot --no-startup-id bash -c 'grim -g "$(slurp)" ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")'
+#set $ddtelegram --no-startup-id ddtelegram.sh
+#set $volume_mute --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+#set $volume_up --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+#set $volume_down --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+#set $brightness_up --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.increase 0.05
+#set $brightness_down --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.decrease 0.05
 
 
 
+# output * bg ~/.local/share/backgrounds/5.jpg fill
 
-output * bg ~/.local/share/backgrounds/5.jpg fill
 # https://github.com/swaywm/sway/wiki
 # man sway-output
 # swaymsg -t get_outputs
-output eDP-1 scale 2
-output eDP-1 pos 0 0
-output DP-3 scale 1
-output DP-3 pos 1920 0
+output DP-6 scale 1 adaptive_sync on
+output eDP-1 scale 2 adaptive_sync on
+output eDP-1 pos 0 0 res 3840x2160
+output DP-6 pos 1920 0 res 2560x1440
 
 input type:touchpad {
         tap enabled
@@ -60,25 +61,13 @@ input type:keyboard {
 }
 
 
-
-# Window settings
-for_window [app_id="alacritty-menu"] floating enable, resize set width 1000 px height 250 px
-for_window [app_id="telegramdesktop"] {
-        opacity 0.98
-        move to workspace 10
-        move right
-        resize set width 550 px
-}
-for_window [instance="spotify"] {
-        opacity 0.98
-        move to workspace 10
-}
 for_window [app_id="Firefox Beta" title="^Picture-in-Picture$"] floating enable
 
-
+bar {
+    swaybar_command waybar
+}
 
 
 
 include ~/.config/sway/conf.d/bindings
 include ~/.config/sway/conf.d/theme
-include ~/.config/sway/conf.d/autostart

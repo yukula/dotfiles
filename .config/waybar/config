@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "pulseaudio", "custom/brightness", "cpu", "memory", "battery", "clock"],
+    "modules-right": ["tray", "pulseaudio", "battery", "clock"],
     "sway/window": {
         "max-length": 50
     },
@@ -15,12 +15,12 @@
     	"format-muted": "",
     	"format-icons": {
 		"headphones": "",
-		"handsfree": "",
+		"handsfree": "",
 		"headset": "",
 		"phone": "",
-		"portable": "",
-		"car": "",
-		"default": ["", ""]
+		"portable": "",
+		"car": "",
+		"default": ["", ""]
 	},
     "scroll-step": 1,
     "on-click": "pavucontrol"

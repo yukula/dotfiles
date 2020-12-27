@@ -119,3 +119,4 @@ mode "window" {
 }
 bindsym $mod+w mode "window"
 
+

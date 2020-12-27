@@ -1,3 +1,4 @@
+
 #
 # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 #
@@ -35,42 +36,35 @@ draw_bold_text_with_bright_colors: true
 
 colors:
   primary:
-    background: '#16171e'
-    foreground: '#f4f1de'
-  # https://coolors.co/16171e-f4f1de-e87761-74bca4-fcd894
+    background: '#0D1117'
+    foreground: '#C9D1D9'
+  # Normal colors
   normal:
-    black:   '#16171e'
-    red:     '#e87761'
-    green:   '#74bca4'
-    yellow:  '#fcd894'
-    blue:    '#f4f1de' # white
-    magenta: '#74bca4' # green
-    cyan:    '#fcd894' # yellow
-    white:   '#f4f1de'
-  # https://coolors.co/55565b-f7f4e7-f9856d-81dbbb-ffd68c
+    black:   '#161B22'
+    red:     '#FF7B72'
+    green:   '#3FB950'
+    yellow:  '#D29922'
+    blue:    '#1F6FEB'
+    magenta: '#BC8CFF'
+    cyan:    '#FFA657'
+    white:   '#C9D1D9'
+
+  # Bright colors
   bright:
-    black:   '#55565b'
-    red:     '#f9856d'
-    green:   '#81dbbb'
-    yellow:  '#ffd68c'
-    blue:    '#f7f4e7' # white
-    magenta: '#81dbbb' # green
-    cyan:    '#ffd68c' # yellow
-    white:   '#f7f4e7'
-  # https://coolors.co/111116-b2b0a2-a95747-558978-b89e6c
-  dim:
-    black:   '#111116'
-    red:     '#a95747'
-    green:   '#558978'
-    yellow:  '#b89e6c'
-    blue:    '#b2b0a2' # white
-    magenta: '#558978' # green
-    cyan:    '#b89e6c' # yellow
-    white:   '#b2b0a2'
-   
+    black:   '#30363D'
+    red:     '#FFA198'
+    green:   '#56D364'
+    yellow:  '#E3B341'
+    blue:    '#79C0FF'
+    magenta: '#D2A8FF'
+    cyan:    '#FFC999'
+    white:   '#F0F6FC'
+  
 
 key_bindings:
   - { key: C,        mods: Control|Shift, chars: "\x03"  }
   - { key: Z,        mods: Control|Shift, chars: "\x01a" }
   - { key: V,        mods: Control,       action: Paste  }
   - { key: C,        mods: Control,       action: Copy   }
+
+

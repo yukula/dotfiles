@@ -1,15 +1,14 @@
 /*
 You can type here any CSS rule recognized by GTK+.
 You can temporarily disable this custom CSS by clicking on the “Pause” button above.
-
 Changes are applied instantly and globally, for the whole application.
 */
 
-@define-color wb_bg		#16171E;
-@define-color wb_fg		#F4F1DE;
-@define-color wb_red		#E87761;
-@define-color wb_green		#74BCA4;
-@define-color wb_yellow		#FCD894;
+@define-color wb_bg		#0D1117;
+@define-color wb_fg		#C9D1D9;
+@define-color wb_red		#FFA657;
+@define-color wb_green		#1F6FEB;
+@define-color wb_yellow		#3FB950;
 
 
 * {
@@ -25,9 +24,8 @@ window#waybar {
 	background:
 		linear-gradient(
 			to right,
-			@wb_red 5%,
-			@wb_green 50%,
-			@wb_yellow 95%
+			@wb_red 40%,
+			@wb_green 90%
 		)
 		left
 		bottom
@@ -43,6 +41,7 @@ window#waybar {
 }
 #workspaces button.focused {
 	background-color: alpha(@wb_red, 1);
+	color: @wb_bg;
 }
 
 #window {
@@ -58,11 +57,14 @@ window#waybar {
 #battery,
 #clock {
 	color: @wb_bg;
+	background-color: alpha(@wb_green, 1);
 /*	padding: 0 15px 5px; */
-	padding: 0 15px 0px;
-	margin: 0 3px;
-	border-radius: 3px;
+	padding: 0 13px 0px;
+	margin-bottom: 5px;
+	margin: 1px;
+	border-radius: 0px;
 }
+/*
 #tray {
 	background-color: alpha(#b4c99d, 0);
 	color: @wb_bg;
@@ -76,3 +78,4 @@ window#waybar {
 	background-color: alpha(@wb_yellow, 1);
 	margin-right: 0;
 }
+*/

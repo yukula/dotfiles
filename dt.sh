@@ -81,6 +81,7 @@ parse_params() {
 # TODO: autodeclare that 
 declare -A tracked_files 
 tracked_files["${HOME}/.tmux.conf"]=".tmux.conf"
+tracked_files["${HOME}/.config/tmux/theme.conf"]=".config/tmux/theme.conf"
 tracked_files["${HOME}/.config/alacritty/alacritty.yml"]=".config/alacritty/alacritty.yml"
 tracked_files["${HOME}/.config/alacritty/extracted_colors.txt"]=".config/alacritty/extracted_colors.txt"
 tracked_files["${HOME}/.config/fish/config.fish"]=".config/fish/config.fish"

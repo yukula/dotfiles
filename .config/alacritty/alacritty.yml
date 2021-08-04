@@ -19,22 +19,28 @@ scrilling:
 
 font:
   normal:
-    family: JetBrains Mono
+    family: Iosevka Nerd Font Mono
     style: Regular
   bold:
-    family: JetBrains Mono
+    family: Iosevka Nerd Font Mono
     style: Bold
   italic:
-    family: JetBrains Mono
+    family: Iosevka Nerd Font Mono
     style: Italic
   size: 13
 
+cursor:
+  style:
+    shape: Underline
+    blinking: off
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
 # https://primer.style/primitives/
 colors:
+  cursor:
+    cursor: CellForeground 
   primary:
     background: '#0D1117'
     foreground: '#C9D1D9'

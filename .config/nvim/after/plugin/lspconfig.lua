@@ -13,6 +13,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
  )
  vim.fn.sign_define("LspDiagnosticsSignError", {text = '', texthl = 'Error', numhl = ''})
 
+ local executable = function(fname)
+   return vim.fn.executable(fname) == 1
+ end
+
 -- lua
 local lua_ls_binary = '/usr/bin/lua-language-server' --{{{
 local lua_ls_main = '/usr/share/lua-language-server/main.lua'
@@ -38,14 +42,18 @@ lsp.sumneko_lua.setup {
 } --}}}
 
 -- c++
-lsp.ccls.setup {--{{{
-  init_options = {
---    compilationDatabaseDirectory = "",
-    index = {
-      threads = 0,
+if executable('ccls') then--{{{
+  lsp.ccls.setup {
+    init_options = {
+    --  compilationDatabaseDirectory = "",
+      index = {
+    threads = 2,
+      },
     },
-  },
-}--}}}
+  }
+elseif executable('clangd') then
+  lsp.clangd.setup {}
+end--}}}
 
 
 -- lsp bindings

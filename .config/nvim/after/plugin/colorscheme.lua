@@ -4,4 +4,5 @@ vim.opt.termguicolors = true
 require('colorbuddy').setup()
 
 vim.g.material_style = "deep ocean"
-require('material').set()
+vim.cmd("colorscheme material")
+-- require('material').set()

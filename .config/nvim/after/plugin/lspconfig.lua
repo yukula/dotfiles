@@ -17,6 +17,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
    return vim.fn.executable(fname) == 1
  end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 -- lua
 local lua_ls_binary = '/usr/bin/lua-language-server' --{{{
 local lua_ls_main = '/usr/share/lua-language-server/main.lua'
@@ -24,7 +27,8 @@ local lua_ls_runtime_path = vim.split(package.path, ';')
 table.insert(lua_ls_runtime_path, "lua/?.lua")
 table.insert(lua_ls_runtime_path, "lua/?/init.lua")
 lsp.sumneko_lua.setup {
-  cmd = {lua_ls_binary, "-E", lua_ls_main};
+  cmd = {lua_ls_binary, "-E", lua_ls_main},
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -36,14 +40,15 @@ lsp.sumneko_lua.setup {
       };
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
-      };
-    };
-  };
+      },
+    },
+  },
 } --}}}
 
 -- c++
 if executable('ccls') then--{{{
   lsp.ccls.setup {
+    capabilities = capabilities,
     init_options = {
     --  compilationDatabaseDirectory = "",
       index = {
@@ -52,12 +57,14 @@ if executable('ccls') then--{{{
     },
   }
 elseif executable('clangd') then
-  lsp.clangd.setup {}
+  lsp.clangd.setup {
+    capabilities = capabilities,
+  }
 end--}}}
 
 
 -- lsp bindings
-vim.api.nvim_set_keymap("i", "<c-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {noremap = true})--{{{
+vim.api.nvim_set_keymap("i", "<c-space>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {noremap = true})--{{{
 vim.api.nvim_set_keymap("n", "<leader>K", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>sd", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})<CR>", {noremap = true})

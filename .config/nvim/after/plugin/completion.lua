@@ -1,18 +1,38 @@
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menu,menuone,noselect"
 
-require('compe').setup {
-  enabled = true,
-  autocomplete = true,
-  debug = false,
-  source = {
-    path = true,
-    buffer = true,
-    nvim_lsp = true,
-    nvim_lua = true,
+local cmp = require'cmp'
+
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
   },
-}
+  sources = {
+    { name = 'nvim_lsp', priority = 10 },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'luasnip' },
+  },
+  mapping = {
+    ["<C-e>"] = cmp.mapping.close(),
+    ["<C-y>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    }),
 
--- bindings
-vim.api.nvim_set_keymap("i", "<c-y>", 'compe#confirm("<c-y>")', {silent = true, noremap = true, expr = true})--{{{
-vim.api.nvim_set_keymap("i", "<c-e>", 'compe#close("<c-e>")', {silent = true, noremap = true, expr = true})
-vim.api.nvim_set_keymap("i", "<c-space>", 'compe#complete("")', {silent = true, noremap = true, expr = true})--}}}
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-u>"] = cmp.mapping.scroll_docs(4),
+
+    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+  },
+  formatting = {
+    format = require'lspkind'.cmp_format({with_text = true, max_width = 50}),
+  },
+
+  experimental = {
+    ghost_text = true,
+  },
+})

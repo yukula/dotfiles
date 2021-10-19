@@ -15,7 +15,18 @@ return require('packer').startup(function(use)
 
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/lsp-status.nvim'
-  use 'hrsh7th/nvim-compe'
+
+  use 'L3MON4D3/LuaSnip'
+
+  use 'hrsh7th/nvim-cmp'
+  use 'saadparwaiz1/cmp_luasnip' -- snip engine is required
+  -- cmp sources
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+
+  use 'onsails/lspkind-nvim'
+
 
   if not is_wsl then
     use 'kyazdani42/nvim-web-devicons'

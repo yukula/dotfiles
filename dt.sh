@@ -98,6 +98,7 @@ tracked_files["${HOME}/.config/nvim/after/plugin/lspconfig.lua"]=".config/nvim/a
 tracked_files["${HOME}/.config/nvim/after/plugin/lsp-status.lua"]=".config/nvim/after/plugin/lsp-status.lua"
 tracked_files["${HOME}/.config/nvim/after/plugin/lualine.lua"]=".config/nvim/after/plugin/lualine.lua"
 tracked_files["${HOME}/.config/nvim/after/plugin/telescope.lua"]=".config/nvim/after/plugin/telescope.lua"
+tracked_files["${HOME}/.config/nvim/after/plugin/treesitter.lua"]=".config/nvim/after/plugin/treesitter.lua"
 tracked_files["${HOME}/.config/sway/conf.d/bindings"]=".config/sway/conf.d/bindings"
 tracked_files["${HOME}/.config/sway/conf.d/theme"]=".config/sway/conf.d/theme"
 tracked_files["${HOME}/.config/sway/config"]=".config/sway/config"

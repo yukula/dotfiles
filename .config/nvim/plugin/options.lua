@@ -51,3 +51,5 @@ opt.shada = { "!", "'1000", "<50", "s10", "h" } -- do not completely undestand
 opt.mouse = "n"
 
 opt.joinspaces = false
+
+

@@ -1,4 +1,4 @@
-xwayland disable
+xwayland enable
 
 # Windows key as 'leader'
 set $mod Mod4
@@ -29,7 +29,8 @@ set $ws10 10
 
 set $term alacritty
 set $menu --no-startup-id bash -c 'swaymsg -t command "exec --no-startup-id $(wofi --show run)"'
-#set $screenshot --no-startup-id bash -c 'grim -g "$(slurp)" ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")'
+set $screenshot --no-startup-id bash -c 'grimshot copy area'
+# set $screenshot --no-startup-id bash -c 'grimshot copy area" ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")'
 #set $ddtelegram --no-startup-id ddtelegram.sh
 #set $volume_mute --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 #set $volume_up --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
@@ -62,6 +63,7 @@ input type:keyboard {
 
 
 for_window [app_id="Firefox Beta" title="^Picture-in-Picture$"] floating enable
+#for_window [app_id="evince"] layout tabbed
 
 bar {
     swaybar_command waybar

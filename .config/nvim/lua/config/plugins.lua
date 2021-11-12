@@ -10,8 +10,7 @@ local is_wsl = function()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use 'marko-cerovac/material.nvim'
-  use 'tjdevries/colorbuddy.nvim'
+  use 'projekt0n/github-nvim-theme'
 
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/lsp-status.nvim'
@@ -26,6 +25,10 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
 
   use 'onsails/lspkind-nvim'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = {':TSUpdate'},
+  }
 
 
   if not is_wsl then

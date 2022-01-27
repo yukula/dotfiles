@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
 
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/lsp-status.nvim'
+  use 'jackguo380/vim-lsp-cxx-highlight'
 
   use 'L3MON4D3/LuaSnip'
 

@@ -52,7 +52,10 @@ if executable('ccls') then--{{{
     init_options = {
     --  compilationDatabaseDirectory = "",
       index = {
-    threads = 2,
+        threads = 0,
+      },
+      highlight = {
+        lsRanges = true,
       },
     },
   }

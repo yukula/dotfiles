@@ -20,7 +20,7 @@ scrilling:
 font:
   normal:
     family: Iosevka Nerd Font Mono
-    style: Regular
+    style: Medium 
   bold:
     family: Iosevka Nerd Font Mono
     style: Bold

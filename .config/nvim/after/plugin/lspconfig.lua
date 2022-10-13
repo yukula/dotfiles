@@ -17,8 +17,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
    return vim.fn.executable(fname) == 1
  end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+
+--cmake --{{{
+require'lspconfig'.cmake.setup{
+  capabilities = capabilities,
+}
+--}}}
+
 
 -- lua
 local lua_ls_binary = '/usr/bin/lua-language-server' --{{{
@@ -45,43 +54,36 @@ lsp.sumneko_lua.setup {
   },
 } --}}}
 
+
+
 -- c++
 if executable('ccls') then--{{{
   lsp.ccls.setup {
-    capabilities = capabilities,
-    init_options = {
-    --  compilationDatabaseDirectory = "",
-      index = {
-        threads = 0,
-      },
-      highlight = {
-        lsRanges = true,
-      },
+  init_options = {
+    cache = {
+      directory = ".ccls-cache";
     },
+    highlight = { 
+      lsRanges = false 
+    }     
   }
+}
 elseif executable('clangd') then
   lsp.clangd.setup {
     capabilities = capabilities,
   }
 end--}}}
 
+-- python
+lsp.pylsp.setup{}
 
 -- lsp bindings
 vim.api.nvim_set_keymap("i", "<c-space>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", {noremap = true})--{{{
 vim.api.nvim_set_keymap("n", "<leader>K", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>sd", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>rf", "<cmd>lua vim.lsp.buf.format()<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<space>ds", "<cmd>lua vim.diagnostic.open_float(0, {scope=\"line\",})<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<space>dn", "<cmd>lua vim.diagnostic.goto_next({wrap=true,float=true})<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<space>dp", "<cmd>lua vim.diagnostic.goto_prev({wrap=true,float=true})<CR>", {noremap = true})
 
 vim.api.nvim_set_keymap("n", "<space>rr", "<cmd>LspRestart<CR>", {noremap = true})--}}}
-
--- vim.api.nvim_set_keymap("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true})
--- vim.api.nvim_set_keymap("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", {noremap = true})
--- vim.api.nvim_set_keymap("n", "<leader>gT", "<cmd>lua vim.lsp.buf.type_definition()<CR>", {noremap = true})
--- vim.api.nvim_set_keymap("n", "<leader>gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", {noremap = true})
--- vim.api.nvim_set_keymap("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", {noremap = true})
-
-
--- vim.api.nvim_set_keymap("n", "<space>dn", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {noremap = true})
--- vim.api.nvim_set_keymap("n", "<space>dp", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {noremap = true})
--- vim.api.nvim_set_keymap("n", "<space>sl", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", {noremap = true})
-

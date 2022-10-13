@@ -94,7 +94,7 @@ bindsym --to-code {
   $mod+Return exec $term
   $mod+d exec $menu
   # Screenshots
-  $mod+Print exec $screenshot
+  $mod+P exec $screenshot
   # Telegram drop-down
   $mod+Shift+t exec $ddtelegram
   # Mako dissmiss the all notification

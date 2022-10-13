@@ -35,8 +35,8 @@ set $screenshot --no-startup-id bash -c 'grimshot copy area'
 #set $volume_mute --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 #set $volume_up --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 #set $volume_down --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-#set $brightness_up --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.increase 0.05
-#set $brightness_down --no-startup-id gdbus call -e -d de.mherzberg -o /de/mherzberg/wlrbrightness -m de.mherzberg.wlrbrightness.decrease 0.05
+set $brightness_up exec brightnessctl set 5%+
+set $brightness_down exec brightnessctl set 5%-
 
 
 

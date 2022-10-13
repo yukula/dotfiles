@@ -11,10 +11,15 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'projekt0n/github-nvim-theme'
+  use 'VDuchauffour/neodark.nvim'
+  use {
+    'metalelf0/jellybeans-nvim',
+    requires = { 'rktjmp/lush.nvim' }
+  }
 
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/lsp-status.nvim'
-  use 'jackguo380/vim-lsp-cxx-highlight'
+  -- use 'jackguo380/vim-lsp-cxx-highlight'
 
   use 'L3MON4D3/LuaSnip'
 
@@ -30,11 +35,22 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = {':TSUpdate'},
   }
+  use 'nvim-treesitter/playground'
+
 
 
   if not is_wsl then
     use 'kyazdani42/nvim-web-devicons'
   end
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+    'nvim-tree/nvim-web-devicons',
+    },
+    tag = 'nightly'
+  }
+
   use 'hoob3rt/lualine.nvim'
 
   use {
@@ -43,4 +59,5 @@ return require('packer').startup(function(use)
   }
 
   use 'tpope/vim-commentary'
+  use 'elkowar/yuck.vim'
 end)

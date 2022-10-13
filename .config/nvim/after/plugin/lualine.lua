@@ -1,29 +1,47 @@
-local lsp_status = require('lsp-status').status
+local function get_file_component()
+  local file_path = vim.api.nvim_buf_get_name(0)
+  local file_path_parent = vim.fs.dirname(file_path)
+
+  if vim.fn.getcwd() == file_path_parent then
+    return vim.fs.basename(file_path)
+  end
+
+  --  , 
+  return vim.fs.basename(file_path_parent) .. "  " .. vim.fs.basename(file_path)
+end
+
+function lspstatus()
+  if table.getn(vim.lsp.get_active_clients()) then
+    local lsp_name = vim.lsp.get_active_clients()[1].name
+    if table.getn(vim.diagnostic.get()) ~= 0 then
+      return require('lsp-status').status() 
+    else
+      return lsp_name
+    end
+    
+  end
+end
 
 require'lualine'.setup {
   options = {
-    icons_enabled = true,
-    theme = 'ayu_dark',
-    component_separators = {'', ''},
-    section_separators = {'', ''},
-    disabled_filetypes = {}
+    theme = "auto"
   },
   sections = {
-    lualine_a = {'branch'},
-    lualine_b = {lsp_status},
+    lualine_a = { get_file_component },
+    lualine_b = {},
     lualine_c = {},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_x = { lspstatus },
+    lualine_y = {'location'},
+    lualine_z = { 'filetype' },
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_c = {},
+    lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
-  tabline = {},
-  extensions = {}
 }
+
+

@@ -1,6 +1,15 @@
 require('telescope').setup {
---
+  defaults = {
+    layout_strategy = 'vertical',
+    layout_config = {
+      prompt_position = 'top',
+      mirror = true,
+      preview_height = 0.7,
+    },
+  },
 }
+
+local builtin = require('telescope.builtin')
 
 -- helper functions
 function Edit_neovim()
@@ -19,21 +28,19 @@ function Edit_neovim()
 end
 
 -- bindings
-vim.api.nvim_set_keymap("n", "<space>en", "<cmd>lua Edit_neovim()<CR>", {noremap = true})
+vim.keymap.set('n', '<space>en', '<cmd>lua Edit_neovim()<CR>')
+
 -- files
-vim.api.nvim_set_keymap("n", "<space>ft", "<cmd>lua require('telescope.builtin').find_files()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<space>ff", "<cmd>lua require('telescope.builtin').git_files()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<space>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", {noremap = true})
-
-
--- git
-vim.api.nvim_set_keymap("n", "<space>gs", "<cmd>lua require('telescope.builtin').git_status()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<space>gc", "<cmd>lua require('telescope.builtin').git_commits()<CR>", {noremap = true})
+vim.keymap.set('n', '<space>fd', builtin.fd, {})
+vim.keymap.set('n', '<space>fg', builtin.git_files, {})
+vim.keymap.set('n', '<space>fb', builtin.buffers, {})
 
 -- grep
-vim.api.nvim_set_keymap("n", "<space>gw", "<cmd>lua require('telescope.builtin').grep_string()<CR>", {noremap = true})
+vim.keymap.set('n', '<space>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<space>f/', builtin.current_buffer_fuzzy_find, {})
 
 -- lsp
-vim.api.nvim_set_keymap("n", "<leader>gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>gr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>", {noremap = true})
+vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {})
+vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, {})
+vim.keymap.set('n', '<leader>gr', builtin.lsp_references, {})
+vim.keymap.set('n', '<space>ds', builtin.diagnostics, {})

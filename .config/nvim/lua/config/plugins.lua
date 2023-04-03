@@ -1,4 +1,3 @@
-
 local is_wsl = function()
   local sysinfo = vim.fn.system('uname -r')
   if string.find(sysinfo, "Microsoft") then
@@ -17,20 +16,24 @@ return require('packer').startup(function(use)
     requires = { 'rktjmp/lush.nvim' }
   }
 
-  use 'neovim/nvim-lspconfig'
+  use {
+    'folke/trouble.nvim',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+  }
+
+  use {'neovim/nvim-lspconfig', branch='master'}
   use 'nvim-lua/lsp-status.nvim'
-  -- use 'jackguo380/vim-lsp-cxx-highlight'
-
-  use 'L3MON4D3/LuaSnip'
-
-  use 'hrsh7th/nvim-cmp'
-  use 'saadparwaiz1/cmp_luasnip' -- snip engine is required
-  -- cmp sources
+  use 'FelipeLema/cmp-async-path'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = { {'L3MON4D3/LuaSnip'}, {'saadparwaiz1/cmp_luasnip'} }
+  }
 
-  use 'onsails/lspkind-nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = {':TSUpdate'},

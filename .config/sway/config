@@ -47,8 +47,8 @@ set $brightness_down exec brightnessctl set 5%-
 # swaymsg -t get_outputs
 output DP-6 scale 1 adaptive_sync on
 output eDP-1 scale 2 adaptive_sync on
-output eDP-1 pos 0 0 res 3840x2160
-output DP-6 pos 1920 0 res 2560x1440
+output DP-6 pos 0 0 res 2560x1440
+output eDP-1 pos 2560 0 res 3840x2160
 
 input type:touchpad {
         tap enabled

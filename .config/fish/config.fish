@@ -1,16 +1,8 @@
-set fish_greeting
+set fish_greeting ""
 
 set -x EDITOR nvim
 
-set -x PATH $PATH ~/.local/bin
 
-
-#set -x GDK_BACKEND wayland
-#set -x MOZ_ENABLE_WAYLAND 1
-
-#set -x SDL_VIDEODRIVER wayland
-
-#set -x QT_QPA_PLATFORM wayland-egl
-#set -x QT_WAYLAND_FORCE_DPI physical
-#set -x QT_QPA_PLATFORM wayland
-#set -x QT_WAYLAND_DISABLE_WINDOWDECORATION 1
+function dotc --wraps git --description 'alias to manage dotfiles over git'
+	git --git-dir=$HOME/.dotc/ --work-tree=$HOME $argv
+end

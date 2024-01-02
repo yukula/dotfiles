@@ -19,13 +19,13 @@ scrilling:
 
 font:
   normal:
-    family: Iosevka Nerd Font Mono
+    family: Iosevka Nerd Font
     style: Medium 
   bold:
-    family: Iosevka Nerd Font Mono
+    family: Iosevka Nerd Font
     style: Bold
   italic:
-    family: Iosevka Nerd Font Mono
+    family: Iosevka Nerd Font
     style: Italic
   size: 13
 

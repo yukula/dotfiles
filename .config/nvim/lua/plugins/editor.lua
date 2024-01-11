@@ -18,9 +18,9 @@ return {
       "saadparwaiz1/cmp_luasnip",
     },
     config = function()
-      local cmp = require "cmp"
-      local luasnip = require "luasnip"
-      local lspkind = require "lspkind"
+      local cmp = require("cmp")
+      local luasnip = require("luasnip")
+      local lspkind = require("lspkind")
 
       require("cmp").setup({
         snippet = {
@@ -37,8 +37,8 @@ return {
           { name = "cmp-nvim-lsp-signature-help" },
         }, {
           { name = "path" },
-          { name = "buffer",  keywoard_length = 3 },
-          { name = "cmdline" }
+          { name = "buffer", keywoard_length = 3 },
+          { name = "cmdline" },
         }),
 
         mapping = cmp.mapping.preset.insert({
@@ -48,14 +48,12 @@ return {
           ["<C-u>"] = cmp.mapping.scroll_docs(4),
           ["<C-space>"] = cmp.mapping.complete(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
-
         }),
 
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
-
 
         formatting = {
           format = lspkind.cmp_format({
@@ -64,13 +62,11 @@ return {
             symbol_map = {
               Copilot = "",
             },
-          })
+          }),
         },
-
       })
 
       vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-
     end,
   },
 
@@ -78,25 +74,38 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     command = "Telescope",
+    keys = {
+      { "<leader><space>", "<cmd>Telescope resume<cr>" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>" },
+      {
+        "<leader>fF",
+        function()
+          require("telescope.builtin").find_files({ cwd = require("telescope.utils").buffer_dir() })
+        end,
+      },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>" },
+
+      { "<leader>sg", "<cmd>Telescope live_grep<cr>" },
+    },
     config = function()
-      local ts = require "telescope"
-      local actions = require "telescope.actions"
-      local actions_layout = require "telescope.actions.layout"
+      local ts = require("telescope")
+      local actions = require("telescope.actions")
+      local actions_layout = require("telescope.actions.layout")
 
       ts.setup({
         defaults = {
           mappings = {
             n = {
-              ["<M-p>"] = actions_layout.toggle_preview
+              ["<M-p>"] = actions_layout.toggle_preview,
             },
             i = {
+              ["<ESC>"] = actions.close,
               ["<M-p>"] = actions_layout.toggle_preview,
-              ["<C-x>"] = actions.delete_buffer + actions.move_to_top
+              ["<C-x>"] = actions.delete_buffer + actions.move_to_top,
             },
           },
         },
       })
     end,
-  }
-
+  },
 }

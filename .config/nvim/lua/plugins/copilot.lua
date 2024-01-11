@@ -5,12 +5,11 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup(
-        {
-          -- disable suggestions; copilot used by `cmp`
-          suggestion = { enabled = false },
-          panel = { enabled = false },
-        })
-    end
+      require("copilot").setup({
+        -- disable suggestions; copilot used by `cmp`
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
   },
 }

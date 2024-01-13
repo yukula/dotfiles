@@ -86,6 +86,14 @@ return {
       { "<leader>fb", "<cmd>Telescope buffers<cr>" },
 
       { "<leader>sg", "<cmd>Telescope live_grep<cr>" },
+      { "<leader>sd", "<cmd>Telescope diagnostics<cr>" },
+
+      -- lsp
+      { "gd", "<cmd>Telescope lsp_definitions<cr>" },
+      { "gy", "<cmd>Telescope lsp_type_definitions<cr>" },
+      { "gr", "<cmd>Telescope lsp_references<cr>" },
+      { "ss", "<cmd>Telescope lsp_document_symbols<cr>" },
+      { "sS", "<cmd>Telescope lsp_workspace_symbols<cr>" },
     },
     config = function()
       local ts = require("telescope")
@@ -94,6 +102,16 @@ return {
 
       ts.setup({
         defaults = {
+          layout_strategy = "vertical",
+          layout_config = {
+            height = 0.9,
+            width = 0.7,
+            prompt_position = "top",
+            mirror = true,
+            scroll_speed = 3,
+            preview_height = 0.45,
+            preview_cutoff = 10,
+          },
           mappings = {
             n = {
               ["<M-p>"] = actions_layout.toggle_preview,
@@ -107,5 +125,57 @@ return {
         },
       })
     end,
+  },
+  {
+    "echasnovski/mini.pairs",
+    event = "BufEnter",
+    config = true,
+  },
+  {
+    "echasnovski/mini.surround",
+    event = "BufEnter",
+    config = true,
+  },
+  {
+    "echasnovski/mini.comment",
+    event = "BufEnter",
+    config = true,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufEnter",
+    keys = {
+      { "<leader>gb", "<cmd>Gitsigns blame_line<cr>" },
+    },
+    config = true,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    lazy = false,
+    config = function()
+      require("lualine").setup({
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "filename" },
+          lualine_c = {
+            -- invoke `progress` here.
+            require("lsp-progress").progress,
+          },
+        },
+      })
+
+      -- listen lsp-progress event and refresh lualine
+      vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+      vim.api.nvim_create_autocmd("User", {
+        group = "lualine_augroup",
+        pattern = "LspProgressStatusUpdated",
+        callback = require("lualine").refresh,
+      })
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
+    lazy = false,
   },
 }

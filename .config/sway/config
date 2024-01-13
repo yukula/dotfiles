@@ -27,7 +27,7 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 
-set $term alacritty
+set $term kitty
 set $menu --no-startup-id bash -c 'swaymsg -t command "exec --no-startup-id $(wofi --show run)"'
 set $screenshot --no-startup-id bash -c 'grimshot copy area'
 # set $screenshot --no-startup-id bash -c 'grimshot copy area" ~/Pictures/screenshots/$(date +"%Y-%m-%d_%H:%M:%S.png")'

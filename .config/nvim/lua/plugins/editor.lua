@@ -127,6 +127,13 @@ return {
     end,
   },
   {
+    "nvim-telescope/telescope-file-browser.nvim",
+    keys = {
+      { "<leader>fe", "<cmd>Telescope file_browser<cr>" },
+    },
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  },
+  {
     "echasnovski/mini.pairs",
     event = "BufEnter",
     config = true,

@@ -4,6 +4,9 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
+    cond = function()
+      return not vim.fn.has("wsl")
+    end,
     config = function()
       require("copilot").setup({
         -- disable suggestions; copilot used by `cmp`

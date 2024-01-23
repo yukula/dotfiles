@@ -51,10 +51,12 @@ output DP-6 pos 0 0 res 2560x1440
 output eDP-1 pos 2560 0 res 3840x2160
 
 input type:touchpad {
+        accel_profile adaptive
+        calibration_matrix "-1.0" 0.0 1.0 0.0 "-1.0" 1.0
+        click_method button_areas 
         tap enabled
+        drag enabled 
         natural_scroll enabled
-        dwt enabled
-        pointer_accel 0.3
 }
 input type:keyboard {
         xkb_layout us,ru

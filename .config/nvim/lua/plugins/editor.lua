@@ -6,7 +6,7 @@ return {
       "nvim-tree/nvim-web-devicons",
       "neovim/nvim-lspconfig",
       "onsails/lspkind.nvim",
-      { "zbirenbaum/copilot-cmp", config = true },
+      { "zbirenbaum/copilot-cmp", config = true, cond = false },
 
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lua",
@@ -14,7 +14,7 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-path",
 
-      "L3MON4D3/LuaSnip",
+      {"L3MON4D3/LuaSnip", tag = "v2.2.0", build = "make install_jsregexp"},
       "saadparwaiz1/cmp_luasnip",
     },
     config = function()
@@ -30,11 +30,11 @@ return {
         },
 
         sources = cmp.config.sources({
-          { name = "copilot" },
-          { name = "nvim_lua" },
+          -- { name = "copilot" },
           { name = "nvim_lsp" },
+          { name = "nvim_lsp_signature_help" },
           { name = "luasnip" },
-          { name = "cmp-nvim-lsp-signature-help" },
+          { name = "nvim_lua" },
         }, {
           { name = "path" },
           { name = "buffer", keywoard_length = 3 },
@@ -47,7 +47,7 @@ return {
           ["<C-d>"] = cmp.mapping.scroll_docs(-4),
           ["<C-u>"] = cmp.mapping.scroll_docs(4),
           ["<C-space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
         }),
 
         window = {

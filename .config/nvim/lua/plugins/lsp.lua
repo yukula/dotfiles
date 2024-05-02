@@ -157,7 +157,7 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
-          -- cmd = { "clangd", "--completion-style=detailed", "--header-insertion=never" },
+          cmd = { "clangd", "--completion-style=detailed", "--header-insertion=never" },
         },
         -- gopls = {},
         -- pyright = {},
@@ -218,13 +218,34 @@ return {
     end,
   },
 
-  -- {
-  --   "linrongbin16/lsp-progress.nvim",
-  --   config = true,
-  -- },
-
   {
     "folke/trouble.nvim",
+    branch = "dev",
+    command = "Trouble",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+
+    opts = {},
   },
 }

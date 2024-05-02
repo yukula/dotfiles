@@ -8,11 +8,9 @@ set $down j
 set $up k
 set $right l
 
-# Disable titlebar
-font JetBrains Mono Regular 0
-titlebar_border_thickness 0
-titlebar_padding 2
-default_border normal 4
+font pango:JetBrains Mono Regular 0.001
+default_border pixel 3
+
 
 gaps inner 10
 
@@ -50,13 +48,20 @@ output eDP-1 scale 2 adaptive_sync on
 output DP-6 pos 0 0 res 2560x1440
 output eDP-1 pos 2560 0 res 3840x2160
 
+# input type:touchpad {
+#         accel_profile adaptive
+#         calibration_matrix "-1.0" 0.0 1.0 0.0 "-1.0" 1.0
+#         click_method button_areas 
+#         tap enabled
+#         drag enabled 
+#         natural_scroll enabled
+# }
 input type:touchpad {
-        accel_profile adaptive
-        calibration_matrix "-1.0" 0.0 1.0 0.0 "-1.0" 1.0
-        click_method button_areas 
-        tap enabled
-        drag enabled 
-        natural_scroll enabled
+    accel_profile adaptive
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+    click_method button_areas 
 }
 input type:keyboard {
         xkb_layout us,ru

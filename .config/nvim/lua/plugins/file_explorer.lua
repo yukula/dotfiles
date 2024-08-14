@@ -3,9 +3,19 @@ return {
     "stevearc/oil.nvim",
     dependencies = { "echasnovski/mini.icons" },
     opts = {
+      use_default_keymaps = false,
       keymaps = {
-        ["?"] = "actions.show_help",
+        ["<C-/>"] = "actions.show_help", -- doesn't work and I don't know why
+        ["<cr>"] = "actions.select",
         ["<esc>"] = "actions.close",
+        ["-"] = "actions.parent",
+        ["_"] = "actions.open_cwd",
+        ["`"] = "actions.cd",
+        ["<M-p>"] = "actions.preview",
+        ["<C-d>"] = "actions.preview_scroll_down",
+        ["<C-u>"] = "actions.preview_scroll_up",
+        ["<C-x>"] = { "actions.select", opts = { horizontal = true } },
+        ["<C-v>"] = { "actions.select", opts = { vertical = true } },
       },
       float = {
         preview_split = "below",

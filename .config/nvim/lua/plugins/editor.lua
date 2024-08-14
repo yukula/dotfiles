@@ -127,6 +127,16 @@ return {
 
       { "<leader>sg", "<cmd>Telescope live_grep<cr>" },
       { "<leader>sd", "<cmd>Telescope diagnostics<cr>" },
+      {
+        "<leader>/",
+        function()
+          require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+            winblend = 10,
+            previewer = false,
+          }))
+        end,
+        { desc = "[/] Fuzzily search in current buffer" },
+      },
 
       -- lsp
       { "gd", "<cmd>Telescope lsp_definitions<cr>" },
@@ -142,16 +152,16 @@ return {
 
       ts.setup({
         defaults = {
-          layout_strategy = "vertical",
-          layout_config = {
-            height = 0.9,
-            width = 0.7,
-            prompt_position = "top",
-            mirror = true,
-            scroll_speed = 3,
-            preview_height = 0.45,
-            preview_cutoff = 10,
-          },
+          -- layout_strategy = "vertical",
+          -- layout_config = {
+          --   height = 0.9,
+          --   width = 0.7,
+          --   prompt_position = "top",
+          --   mirror = true,
+          --   scroll_speed = 3,
+          --   preview_height = 0.45,
+          --   preview_cutoff = 10,
+          -- },
           mappings = {
             n = {
               ["<M-p>"] = actions_layout.toggle_preview,
@@ -164,82 +174,11 @@ return {
           },
         },
       })
-
       -- Enable Telescope extensions if they are installed
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
     end,
   },
-  {
-
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-      {
-        "<M-e>",
-        function()
-          require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-        end,
-      },
-      {
-        "<M-q>",
-        function()
-          require("harpoon"):list():add()
-        end,
-      },
-      {
-        "<M-1>",
-        function()
-          require("harpoon"):list():select(1)
-        end,
-      },
-      {
-        "<M-2>",
-        function()
-          require("harpoon"):list():select(2)
-        end,
-      },
-      {
-        "<M-3>",
-        function()
-          require("harpoon"):list():select(3)
-        end,
-      },
-      {
-        "<M-4>",
-        function()
-          require("harpoon"):list():select(4)
-        end,
-      },
-      {
-        "<leader><M-1>",
-        function()
-          require("harpoon"):list():replace_at(1)
-        end,
-      },
-      {
-        "<leader><M-2>",
-        function()
-          require("harpoon"):list():replace_at(2)
-        end,
-      },
-      {
-        "<leader><M-3>",
-        function()
-          require("harpoon"):list():replace_at(3)
-        end,
-      },
-      {
-        "<leader><M-4>",
-        function()
-          require("harpoon"):list():replace_at(4)
-        end,
-      },
-    },
-    opts = {},
-  },
-
   {
     "nvim-telescope/telescope-file-browser.nvim",
     keys = {

@@ -28,7 +28,7 @@ return {
             fg = c.fg,
             bg = background,
           }
-          hl.NonText= {
+          hl.NonText = {
             fg = c.fg,
             bg = background,
           }
@@ -43,7 +43,15 @@ return {
           }
         end,
       })
-      vim.cmd.colorscheme("hybrid")
+      -- vim.cmd.colorscheme("hybrid")
+    end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("kanagawa-dragon")
     end,
   },
 }

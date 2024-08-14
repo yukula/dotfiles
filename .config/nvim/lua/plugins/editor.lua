@@ -179,13 +179,6 @@ return {
       pcall(require("telescope").load_extension, "ui-select")
     end,
   },
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    keys = {
-      { "<leader>fe", "<cmd>Telescope file_browser<cr>" },
-    },
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-  },
 
   { -- Collection of various small independent plugins/modules
     "echasnovski/mini.nvim",

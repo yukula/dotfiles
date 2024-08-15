@@ -7,7 +7,7 @@ return {
       keymaps = {
         ["<C-/>"] = "actions.show_help", -- doesn't work and I don't know why
         ["<cr>"] = "actions.select",
-        ["<esc>"] = "actions.close",
+        ["q"] = "actions.close",
         ["-"] = "actions.parent",
         ["_"] = "actions.open_cwd",
         ["`"] = "actions.cd",

@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
-    dependencies = { "echasnovski/mini.icons" },
+    dependencies = { "echasnovski/mini.icons", config = true },
     opts = {
       use_default_keymaps = false,
       keymaps = {

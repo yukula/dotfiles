@@ -1,0 +1,3 @@
+[submodule ".config/tmux/plugins/kanagawa"]
+	path = .config/tmux/plugins/kanagawa
+	url = https://github.com/Nybkox/tmux-kanagawa.git

@@ -18,7 +18,12 @@ return {
         ["<C-v>"] = { "actions.select", opts = { vertical = true } },
       },
       float = {
+        max_width = 0.4,
+        max_height = 0.4,
+
         preview_split = "below",
+        border = "rounded",
+        minimized_border = "none",
       },
     },
     keys = {

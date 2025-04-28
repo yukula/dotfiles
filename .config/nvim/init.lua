@@ -5,15 +5,33 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require("config.keymaps")
-require("config.options")
-require("lazy").setup("plugins")
+require("settings")
+require("keymaps")
+require("statusline")
+require("lsp")
 
-local autocmd = vim.api.nvim_create_autocmd
-autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+require("lazy").setup("plugins", {
+  ui = { border = "rounded" },
+  dev = { path = vim.g.projects_dir },
+  install = {
+    missing = false,
+  },
+  change_detection = { notify = false },
+
+  rocks = {
+    enabled = false,
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "netrwPlugin",
+        "rplugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 })

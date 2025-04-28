@@ -4,8 +4,6 @@ vim.opt.hlsearch = true
 keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -29,5 +27,5 @@ keymap.set("i", ".", ".<c-g>u")
 keymap.set("i", ";", ";<c-g>u")
 
 keymap.set("n", "<leader><leader>", function()
-  vim.cmd("so")
+    vim.cmd("so")
 end)

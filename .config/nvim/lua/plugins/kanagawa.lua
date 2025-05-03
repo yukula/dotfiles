@@ -5,6 +5,11 @@ return {
   config = function()
     require("kanagawa").setup({
       transparent = true,
+      theme = "dragon", -- wave, dragon, lotus
+      background = {
+        dark = "dragon",
+        light = "lotus",
+      },
       overrides = function(colors)
         local theme = colors.theme
         local palette = colors.palette
@@ -46,7 +51,7 @@ return {
           TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
 
           Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
-          PmenuSel = { fg = "none", bg = theme.ui.bg_p1 },
+          PmenuSel = { fg = "none", bg = theme.ui.bg_p2 },
           PmenuSbar = { bg = theme.ui.bg_p1 },
           PmenuThumb = { bg = theme.ui.bg_p2 },
 
@@ -81,10 +86,15 @@ return {
           -- BlinkCmpLabelDetail = { fg = colors.grey, bg = colors.bg },
           -- BlinkCmpMenu = { bg = theme.ui.bg_p1 },
           -- BlinkCmpMenuBorder = { bg = 'none', fg = 'none' },
+
+          WinBar = { fg = theme.ui.fg, bg = theme.ui.bg_p1 },
+          WinBarNC = { bg = theme.ui.bg },
+          WinBarDir = { fg = theme.ui.special, bg = theme.ui.bg_p1, italic = true },
+          WinBarSeparator = { fg = theme.ui.special, bg = theme.ui.bg_p1 },
         })
       end,
     })
 
-    vim.cmd.colorscheme("kanagawa-dragon")
+    vim.cmd.colorscheme("kanagawa")
   end,
 }

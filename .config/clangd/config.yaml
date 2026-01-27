@@ -1,0 +1,6 @@
+Documentation:
+  CommentFormat:  Doxygen
+
+CompileFlags:
+  Add: -Wno-unknown-warning-option
+  Remove: [-m*, -f*]

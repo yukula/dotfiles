@@ -1,5 +1,3 @@
-local icons = require 'icons'
-
 -- Diffs for git revisions.
 return {
     {
@@ -15,25 +13,6 @@ return {
 
             return {
                 default_args = { DiffviewFileHistory = { '%' } },
-                icons = {
-                    folder_closed = icons.symbol_kinds.Folder,
-                    folder_open = '󰝰',
-                },
-                signs = {
-                    fold_closed = icons.arrows.right,
-                    fold_open = icons.arrows.down,
-                    done = '',
-                },
-                hooks = {
-                    diff_buf_read = function(bufnr)
-                        -- Register the leader group with miniclue.
-                        vim.b[bufnr].miniclue_config = {
-                            clues = {
-                                { mode = 'n', keys = '<leader>G', desc = '+diffview' },
-                            },
-                        }
-                    end,
-                },
                 -- stylua: ignore start
                 keymaps = {
                     -- Easier to just configure what I need.
@@ -41,8 +20,6 @@ return {
                     view = {
                         { 'n', '<tab>',      actions.select_next_entry,             { desc = 'Open the diff for the next file' } },
                         { 'n', '<s-tab>',    actions.select_prev_entry,             { desc = 'Open the diff for the previous file' } },
-                        { 'n', '[F',         actions.select_first_entry,            { desc = 'Open the diff for the first file' } },
-                        { 'n', ']F',         actions.select_last_entry,             { desc = 'Open the diff for the last file' } },
                         { 'n', '[x',         actions.prev_conflict,                 { desc = 'Merge-tool: jump to the previous conflict' } },
                         { 'n', ']x',         actions.next_conflict,                 { desc = 'Merge-tool: jump to the next conflict' } },
                         { 'n', 'gf',         actions.goto_file_tab,                 { desc = 'Open the file in a new tabpage' } },
@@ -79,8 +56,6 @@ return {
                         { 'n', '<c-f>',      actions.scroll_view(0.25),             { desc = 'Scroll the view down' } },
                         { 'n', '<tab>',      actions.select_next_entry,             { desc = 'Open the diff for the next file' } },
                         { 'n', '<s-tab>',    actions.select_prev_entry,             { desc = 'Open the diff for the previous file' } },
-                        { 'n', '[F',         actions.select_first_entry,            { desc = 'Open the diff for the first file' } },
-                        { 'n', ']F',         actions.select_last_entry,             { desc = 'Open the diff for the last file' } },
                         { 'n', 'i',          actions.listing_style,                 { desc = 'Toggle between "list" and "tree" views' } },
                         { 'n', '[x',         actions.prev_conflict,                 { desc = 'Go to the previous conflict' } },
                         { 'n', ']x',         actions.next_conflict,                 { desc = 'Go to the next conflict' } },
@@ -107,8 +82,6 @@ return {
                         { 'n', '<c-f>',     actions.scroll_view(0.25),          { desc = 'Scroll the view down' } },
                         { 'n', '<tab>',     actions.select_next_entry,          { desc = 'Open the diff for the next file' } },
                         { 'n', '<s-tab>',   actions.select_prev_entry,          { desc = 'Open the diff for the previous file' } },
-                        { 'n', '[F',        actions.select_first_entry,         { desc = 'Open the diff for the first file' } },
-                        { 'n', ']F',        actions.select_last_entry,          { desc = 'Open the diff for the last file' } },
                         { 'n', 'gf',        actions.goto_file_tab,              { desc = 'Open the file in a new tabpage' } },
                         { 'n', '?',         actions.help('file_history_panel'), { desc = 'Open the help panel' } },
                     },

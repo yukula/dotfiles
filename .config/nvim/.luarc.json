@@ -1,0 +1,14 @@
+{
+  "runtime.version": "LuaJIT",
+  "workspace.library": [
+    "$VIMRUNTIME",
+    "${3rd}/luv/library",
+    "~/.local/share/nvim/lazy/kanagawa.nvim",
+    "~/.local/share/nvim/lazy",
+    "~/.local/share/nvim/lazy/lazy.nvim"
+  ],
+  "diagnostics.globals": ["vim"],
+  "diagnostics.disable": ["missing-fields"],
+  "workspace.checkThirdParty": false,
+  "telemetry.enable": false
+}

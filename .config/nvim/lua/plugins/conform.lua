@@ -1,41 +1,39 @@
 return {
-  {
     "stevearc/conform.nvim",
-    event = "BufWritePre",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     opts = {
-      notify_on_error = false,
-      formatters_by_ft = {
-        c = { name = "clangd", timeout_ms = 500, lsp_format = "prefer" },
-        cpp = { name = "clangd", timeout_ms = 500, lsp_format = "prefer" },
-        json = { "prettier", stop_on_first = true, name = "dprint", timeout_ms = 500 },
-        lua = { "stylua" },
-        markdown = { "prettier" },
-        rust = { name = "rust_analyzer", timeout_ms = 500, lsp_format = "prefer" },
-        scss = { "prettier" },
-        sh = { "shfmt" },
-        ["_"] = { "trim_whitespace", "trim_newlines" },
-      },
-      format_on_save = function()
-        -- Don't format when minifiles is open, since that triggers the "confirm without
-        -- synchronization" message.
-        if vim.g.minifiles_active then
-          return nil
-        end
-
-        -- Stop if we disabled auto-formatting.
-        if not vim.g.autoformat then
-          return nil
-        end
-
-        return {}
-      end,
+        formatters_by_ft = {
+            lua = { "stylua" },
+        },
+        default_format_opts = {
+            lsp_format = "fallback",
+            quiet = true, -- Suppress notifications
+        },
+        format_after_save = function(bufnr)
+            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+                return
+            end
+            return {
+                lsp_format = "fallback",
+                quiet = true,
+            }
+        end,
+        notify_on_error = false,
+        notify_no_formatters = false,
     },
     init = function()
-      -- Use conform for gq.
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
-      -- Start auto-formatting by default (and disable with my ToggleFormat command).
-      vim.g.autoformat = true
+        -- Create user commands to toggle format-on-save
+        vim.api.nvim_create_user_command("FormatOnSaveOff", function()
+            vim.g.disable_autoformat = true
+            print("Format-on-save disabled")
+        end, { desc = "Disable format-on-save" })
+
+        vim.api.nvim_create_user_command("FormatOnSaveOn", function()
+            vim.g.disable_autoformat = false
+            print("Format-on-save enabled")
+        end, { desc = "Enable format-on-save" })
     end,
-  },
 }

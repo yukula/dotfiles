@@ -1,0 +1,18 @@
+theme = Kanagawa Wave
+background = #181820
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 18
+background-opacity = 1
+alpha-blending = native
+background-blur = 40
+
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = false
+
+keybind = ctrl+shift+c=text:\x03
+keybind = performable:ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+
+shell-integration-features = sudo
+keybind = shift+enter=text:\x1b\r

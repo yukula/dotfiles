@@ -1,4 +1,3 @@
----@type vim.lsp.Config
 return {
     cmd = {
         'clangd',
@@ -8,6 +7,9 @@ return {
         '--fallback-style=none',
         '--function-arg-placeholders=false',
         '--query-driver=**/*',
+        "--compile-commands-dir=./",
+        "--experimental-modules-support"
+
     },
     filetypes = { 'c', 'cpp' },
     root_markers = { '.clangd' },
